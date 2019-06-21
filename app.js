@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var User = require('./models/userregModel.js');
 
+var port = process.env.PORT || 8080;
+
 app.set('view engine','ejs');
 app.set('views',__dirname+'/public');
 app.use(express.static('public'));
@@ -171,6 +173,6 @@ app.post('/facerecogniser',async(req,res)=>{
 
 
 
-app.listen(3000,(err)=>{
-  console.log("server started at http://localhost:3000")
+app.listen(port,(err)=>{
+  console.log("server started at port :"+port)
 });
