@@ -11,8 +11,8 @@ var port = process.env.PORT || 8080;
 
 app.set('view engine','ejs');
 app.set('views',__dirname+'/public');
-app.use(express.static(__dirname+'/public'));
-app.use(express.static(__dirname+'/utemp'));
+app.use(express.static('public'));
+app.use(express.static('utemp'));
 
 app.use(bodyParser.json({limit: '20mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '20mb', extended: true}))
