@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Face Verify</title>
+  <link rel='shortcut icon' href='./favicon.ico' type='image/x-icon' />
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <div id="loading">
+        <div class="loader"></div>
+    </div>  
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="./logo.png" class="logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#attendance">Attendance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#register">Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-info text-white">
+    <div class="container text-center">
+      <h1 class="text-center">Welcome to Face Verify System</h1>
+      <p class="lead">A Face recognition based online attendance system</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="pb-5 text-center">About</h2>
+          <p class="lead">Facial recognition is a way of recognizing a human face through technology.
+             A facial recognition system uses biometrics to map facial features from a photograph or video.
+              It compares the information with a database of known faces to find a match.</p>
+          <ul>
+            <li>Find human faces in photos and images.</li>
+            <li>Detects age groups; child, young-adult, adult, or senior.</li>
+            <li>Detects gender of each face found; female or male.</li>
+            <li>Organize faces for easy searching, sorting, and matching.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="attendance" class="bg-info">
+    <div class="container">
+          <h2 class="text-center pb-5 text-white">Attendance Mark</h2>
+
+          <div class="alert alert-danger warnsminhigh" role="alert" id="atwarn">
+              Yup! You forgot to take the picture. Click on start cam button and then capture.
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <div class="camera1">
+                      <div class="div-content">
+                         <video id="video1" autoplay class=" img-responsive img-thumbnail" poster="./icon.png"></video>
+                      </div><br/>
+                      <div class="form-group">
+                          <label for="sel1"><b class="text-white">Course</b></label>
+                          <select class="form-control" id="uscourses" name="uscourses">
+                            <option value="All">All</option>
+                            <option value="Data analytics">Data analytics</option>
+                            <option value="Machine Learning">Machine Learning</option>
+                            <option value="Artificial Inteligence">Artificial Inteligence</option>
+                            <option value="Data science">Data science</option>
+                          </select>
+                      </div>
+                      <div class = "actbtns1">
+                        <button class="btn btn-light" id="cambtn1">Start Cam</button>
+                        <button class="btn btn-light float-right" id="attnbtn">Attendance</button>
+                      </div>
+                      <form action="/facerecogniser" id="usearch" method="post" enctype="application/x-www-form-urlencoded">
+                        <img class="myimg1" id="image-block1"/>
+                        <input type="hidden" id="upic1" name="upic1" value="no1">
+                        <input type="hidden" id="usatcourses" name="usatcourses" value="All">
+                        <input type="hidden" id="atoken" name="atoken" value="">
+                      </form>
+                      <canvas id="canvas1"></canvas>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-8">
+                <div class="row apires">
+
+                    <script> 
+                        function myFunction() {
+                          document.getElementById("loading").style.display = "none";
+                          var elmnt = document.getElementById("attendance");
+                          elmnt.scrollIntoView();
+                          document.getElementById("cambtn1").disabled = true;
+                          document.getElementById("attnbtn").disabled = true;
+                        }
+                    </script>
+
+                    <% if(attend == 'dresult'){ %>
+                      <% include userData  %> 
+                      <script> myFunction();</script>
+                    <% }else if(attend == 'warn1'){ %>
+                      <p class ="text-white text-bold"><%=text1 %></p>
+                      <a href="../#register" class="btn btn-warning backbtn">Back</a>
+                      <script> myFunction();</script>
+                    <% }else if(attend == 'warn2'){ %>
+                      <p class ="text-white text-bold"><%=text2 %></p>
+                      <a href="../#attendance" class="btn btn-warning backbtn">Retry</a> &nbsp; &nbsp; &nbsp; &nbsp;
+                      <a href="../#register" class="btn btn-warning backbtn">Register</a>
+                      <script> myFunction();</script>
+                    <% } else { %>
+
+                      <div class="mx-auto instr text-white text-bold">
+                          <h5 class="pb-1 text-center">Instructions</h5>
+                          <p class="lead">The ‘Face Detection’ model returns probability scores on the likelihood 
+                            that the image contains human faces and coordinate locations
+                             of where those faces appear with a bounding box.</p>
+                          <ul>
+                            <li>Click on the start cam button.</li>
+                            <li>Camera will open, adjust your face to camera.</li>
+                            <li>Click on capture button and then attendance button then wait for some time it shows the results.</li>
+                            <li>While capturing make sure your face is clearly visible and occupies 80% of entire picture.</li>
+                            <li>In case of getting late results, dont hesitate. It depends upon internet speed our processing speed as well.</li>
+                            <li>We are trying to give you accurate results always.</li>
+                          </ul>
+                        </div>
+
+                      <% } %>
+                </div>
+            </div>
+          </div>
+
+    </div>
+  </section>
+
+  <section id="register">
+      <div class="container">
+        <h2 class="text-center pb-5">User Registration</h2>
+        <div class="alert alert-danger warnsminhigh" role="alert" id="rgwarn">
+            Yup! You forgot to take the picture. Click on start cam button and then capture.
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-md-12 col-lg-4">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="camera2">
+                          <div class="div-content">
+                              <video id="video2" autoplay class=" img-responsive img-thumbnail" poster="./icon.png"></video>
+                          </div><br/>
+                          <div class = "actbtns d-flex justify-content-center">
+                            <button class="btn btn-info" id="cambtn2">Start Cam</button>
+                          </div>
+                          <canvas id="canvas2"></canvas>
+                      </div>
+                  </div>
+      <form action="/uregister" id="uregform" method="post" enctype="application/x-www-form-urlencoded">
+                  <div class="col-lg-12 text-center">
+                      <div class="form-group addrs"><br/>
+                          <label for="comment"><b class="adrlabel">Address</b></label>
+                          <textarea class="form-control" rows="9" cols="40" id="addr" name="addr" required></textarea>
+                          <img class="myimg2" id="image-block2"/>
+                          <input type="hidden" id="upic" name="upic" value="no">
+                          <input type="hidden" id="utoken" name="utoken" value="">
+                      </div>   
+                  </div>
+              </div>
+          </div>
+
+          <div class="container col-md-12 col-lg-8">
+            <div class="form-group">
+              <label for="uname"><b>First Name:</b></label>
+              <input type="text" placeholder="Enter first name" class="form-control"  id="uname" name="uname" required>
+            </div>
+            <div class="form-group">
+              <label for="sname"><b>Second Name:</b></label>
+              <input type="text" placeholder="Enter second name" class="form-control" id="sname" name="sname" required>
+            </div>
+            <div class="form-group">
+              <label for="email"><b>Email:</b></label>
+              <input type="email" placeholder="Enter email id" class="form-control" id="uemail" name="uemail" required>
+            </div>
+            <div class="form-group">
+              <label for="sname" class="mr-3"><b>Gender:</b></label>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" value="male" id="gender" name="gender" checked>Male
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" value="female" id="gender" name="gender">Female
+                 </label>
+              </div>
+              <div class="form-check-inline disabled">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" value="other" id="gender" name="gender">Other
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sel1"><b>Course</b></label>
+              <select class="form-control" id="ucourses" name="ucourses">
+                <option value="Data analytics">Data analytics</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Artificial Inteligence">Artificial Inteligence</option>
+                <option value="Data science">Data science</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="phno"><b>Phone no:</b></label>
+                <input type="number" placeholder="Enter phone number" class="form-control" id="uphno" name="uphno" required>
+            </div>
+            <div class="form-group">
+                <label for="place"><b>Place:</b></label>
+                <input type="text" placeholder="Enter place" class="form-control" id="place" name="place" required>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" id="submitBtn" class="btn btn-primary signupbtn" value="Submit" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="py-2 bg-info">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+      
+  <!-- Bootstrap core JavaScript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="js/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

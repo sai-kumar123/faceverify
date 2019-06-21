@@ -1,0 +1,210 @@
+.navbar-dark .navbar-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgb(3,169,244)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+#video1, #video2, .regimg{
+    height: 211px;
+    width:280px;
+    border-radius:15px;
+    box-shadow:2px 2px 20px 2px rgb(225,225,225,0.8);
+}
+
+.regimg{
+    height: 211px;
+    width:280px;
+    border: 1px solid gray;
+}
+  
+.preimg{
+    height: 180px;
+    width: 250px;
+    border: 1px solid gray;
+    margin-top: 15px;
+}
+
+#canvas1, #canvas2{
+   display: none;
+}
+
+.camera1, .camera2{
+    max-width: 280px;
+    margin: 10px auto;
+}
+  
+.myimg1, .myimg2{
+    height: 300px;
+    width:300px;
+}
+
+.addrs{
+    min-width:300px;
+    width: 100%;
+    margin: 0px auto;
+    margin-bottom:20px;
+    clear: both;
+}
+
+.myimg1, .myimg2{
+    display: none;
+ }
+
+
+.actbtns1 .btn-light{
+    font-size: 14px;
+    font-weight: bold;
+}
+ 
+#navbarResponsive ul li a,.navbar-dark .navbar-brand{
+    color:#222;
+    font-weight: 600;
+}
+  
+#navbarResponsive ul li a:hover,.navbar-dark .navbar-brand:hover{
+  color:maroon;
+}
+  
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+  
+
+button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+  
+button:hover {
+    opacity:1;
+}
+  
+.signupbtn {
+    margin: 15px auto;
+    width: 50%;
+}
+  
+ .warnsminhigh{
+    min-height: 40px;
+ }
+
+ .apires{
+     padding: 10px 20px;
+ }
+
+ 
+ #loading {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999999;
+    overflow: hidden;
+    background: rgba(255,255,255,0.7);
+  }
+  .loader {
+    left: 50%;
+    margin-left: -4em;
+    width: 55px;
+    display: block;
+    background-color: #03A9F4;
+    height: 55px;
+    -webkit-animation: 3s rotate2 ease-in-out infinite;
+    animation: 3s flip ease-in-out infinite;
+  }
+  .loader,
+  .loader:after {
+    display: block;
+      position: absolute;
+      top: 50%;
+      margin-top: -4.05em;
+  }
+
+  @-webkit-keyframes flip {
+    0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+    }
+    50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+    }
+    75% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(-180deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(-180deg);
+    }
+    100% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(-360deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(-360deg);
+    }
+}
+  
+@keyframes flip {
+    0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+    }
+    50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+    }
+    75% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(-180deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(-180deg);
+    }
+    100% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(-360deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(-360deg);
+    }
+}
+
+
+@media (max-width: 575px){
+    header h1{
+        font-size: 24px;
+    }
+    #addr{
+        margin:0 20% 0 20%;
+    }
+    .adrlabel{
+        margin-left:60%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    header h1{
+        font-size: 34px;
+    }
+    #addr{
+        margin:0 35% 0 35%;
+    }
+    .adrlabel{
+        margin-left:70%;
+    }
+   
+} 
+
+@media (min-width: 768px) and (max-width: 991px){
+    #addr{
+        margin:0 50% 0 50%;
+    }
+    .adrlabel{
+        margin-left:100%;
+    }
+} 
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+}
+
