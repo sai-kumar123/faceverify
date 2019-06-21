@@ -142,7 +142,7 @@ app.post('/facerecogniser',async(req,res)=>{
       }
       else{
         var high = newarr.indexOf(Math.max(...newarr));
-          if(Math.max(...newarr) > 80){
+          if(Math.max(...newarr) > 90){
             uid = facepaths[high];
             User.findOne({imgtoken:uid},(err,doc)=>{
                   res.render('index',({
